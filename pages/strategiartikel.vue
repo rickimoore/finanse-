@@ -13,12 +13,12 @@
                         </div>
                     </div>
                 </div>
+                <h1>{{item.fields.rubrik}}</h1>
                 <div class="row">
                     <div class="entry--image" v-if="item.fields.image">
                         <div class="image" :style="'background-image: url(' + item.fields.image.fields.file.url + ')'"></div>
                     </div>
                     <div class="entry--content">
-                        <h1>{{item.fields.rubrik}}</h1>
                         <p>{{item.fields.ingress}}</p>
                     </div>
                 </div>
@@ -72,6 +72,7 @@
     }
 
     .company--info {
+
         margin-bottom: 25px;
     }
 
