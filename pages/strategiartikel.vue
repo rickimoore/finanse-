@@ -1,10 +1,27 @@
 <template>
     <div>
         <div class="container">
-            <h1>strategiartikel</h1>
             <div class="entry" v-for="(item, $index) in entries" :key="$index">
-                <h1>{{item.fields.rubrik}}</h1>
-                <p>{{item.fields.ingress}}</p>
+                <div class="company--info row">
+                    <span style="color: red; margin-right: 25px">{{item.fields.artikeltyp}}</span>
+                    <div class="company">
+                        <div class="row">
+                            <div class="image--container">
+                                <img class="logo" v-if="item.fields.analyseratBolag.fields.bolagslogotyp" :src="item.fields.analyseratBolag.fields.bolagslogotyp.fields.file.url" alt="">
+                            </div>
+                            <p>{{item.fields.analyseratBolag.fields.namn}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="entry--image" v-if="item.fields.image">
+                        <div class="image" :style="'background-image: url(' + item.fields.image.fields.url + ')'"></div>
+                    </div>
+                    <div class="entry--content">
+                        <h1>{{item.fields.rubrik}}</h1>
+                        <p>{{item.fields.ingress}}</p>
+                    </div>
+                </div>
 
                 <ul v-if="item.fields.bullets">
                     <li v-for="bullet in item.fields.bullets">{{bullet}}</li>
@@ -40,6 +57,12 @@
         margin-top: 50px;
     }
 
+    .row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
     .entry {
         padding: 5%;
         margin-bottom: 15px;
@@ -53,6 +76,13 @@
 
     ul li {
         list-style-type: circle;
+    }
+    .image--container{
+        margin-right: 15px;
+    }
+
+    .company .logo {
+        width: 85px;
     }
 
 </style>
