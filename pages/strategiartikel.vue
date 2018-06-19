@@ -4,7 +4,7 @@
             <div class="entry" v-for="(item, $index) in entries" :key="$index">
                 <div class="company--info row">
                     <span style="color: red; margin-right: 25px">{{item.fields.artikeltyp}}</span>
-                    <div class="company">
+                    <div class="company" v-if="item.fields.analyseratBolag">
                         <div class="row">
                             <div class="image--container">
                                 <img class="logo" v-if="item.fields.analyseratBolag.fields.bolagslogotyp" :src="item.fields.analyseratBolag.fields.bolagslogotyp.fields.file.url" alt="">
